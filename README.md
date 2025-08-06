@@ -1,4 +1,4 @@
-# 🌸 Project: **Muse.me**
+# 🌸 **Muse.me**
 _Your Life, Romanticized by AI_
 
 A whimsical and aesthetic AI that transforms your mundane routines, bios, or journal rants into dreamy alternate lives — complete with personality archetypes, fictional routines, moodboard prompts, and even a Spotify soundtrack. Then it renders a downloadable **Aesthetic ID Card** to celebrate your new persona.
@@ -130,6 +130,3 @@ A whimsical and aesthetic AI that transforms your mundane routines, bios, or jou
 ## 🔗 Coming Soon
 
 - [ ] Live demo site
-- [ ] Public moodboard generator
-- [ ] User login + save your muses
-- [ ] Community aesthetic gallery
