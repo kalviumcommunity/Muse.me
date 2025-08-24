@@ -1,37 +1,6 @@
-# 🌸# 🌸 Muse.me — Your Life, Romanticized by AI
+# 🌸 Muse.me — Your Life, Romanticized by AI
 
 <div align="center">
-
-![Muse.me Logo](https://img.shields.io/badge/Muse.me-🌸-pink?style=for-the### 🧾 1. Prompt Engineering
-
-<details>
-<summary><strong>Click to expand</strong></summary>
-
-A sophisticated system prompt guides the model to respond with poetic yet structured output:
-
-```
-"You are a poetic, emotionally intelligent AI with a rich aesthetic vocabulary…"
-```
-
-**The prompt instructs the model to return:**
-- ✨ Aesthetic identity name  
-- 📅 Fictional daily routine (3–5 steps)  
-- 🎭 3–5 personality traits  
-- 🌸 Vibe description  
-- 🎨 Moodboard prompts  
-- 🎵 Spotify playlist name
-
-</details>License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://choosealicense.com/licenses/mit/)
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg?style=for-the-badge&logo=python)](https://python.org)
-[![Next.js](https://img.shields.io/badge/Next.js-13+-black.svg?style=for-the-badge&logo=next.js)](https://nextjs.org)
-
-**Transform real-life monotony into aesthetic alternate lives through creative, intelligent automation.**
-
-[✨ Live Demo](https://muse-me.vercel.app) • [📖 Documentation](docs/README.md) • [🐛 Report Bug](https://github.com/kalviumcommunity/Muse.me/issues) • [💡 Request Feature](https://github.com/kalviumcommunity/Muse.me/issues), Romanticized by AI
-
-<div align="center">
-
-![Muse.me Logo](https://img.shields.io/badge/Mus### 🧾 1. Prompt Engineering
 
 <details>
 <summary><strong>Click to expand</strong></summary>
@@ -50,11 +19,7 @@ A sophisticated system prompt guides the model to respond with poetic yet struct
 - 🎨 Moodboard prompts  
 - 🎵 Spotify playlist name
 
-</details>yle=for-the-badge)
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://choosealicense.com/licenses/mit/)
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg?style=for-the-badge&logo=python)](https://python.org)
-[![Next.js](https://img.shields.io/badge/Next.js-13+-black.svg?style=for-the-badge&logo=next.js)](https://nextjs.org)
-
+</details>
 **Transform real-life monotony into aesthetic alternate lives through creative, intelligent automation.**
 
 [✨ Live Demo](https://muse-me.vercel.app) • [📖 Documentation](docs/README.md) • [🐛 Report Bug](https://github.com/kalviumcommunity/Muse.me/issues) • [💡 Request Feature](https://github.com/kalviumcommunity/Muse.me/issues)
