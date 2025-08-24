@@ -1,22 +1,3 @@
-"""
-Comprehensive Test Suite for Function Calling Implementation
-
-This test suite validates the function calling system across multiple dimensions:
-1. Function registry and schema validation
-2. Individual function execution
-3. FastAPI endpoint functionality
-4. Error handling and edge cases
-5. Performance characteristics
-6. Integration with existing systems
-
-Test Categories:
-- Function Registry Tests
-- Function Execution Tests
-- API Endpoint Tests
-- Performance Tests
-- Integration Tests
-"""
-
 import asyncio
 import json
 import time
