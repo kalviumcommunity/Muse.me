@@ -1,4 +1,4 @@
-# 🌸# 🌸 Muse.me — Your Life, Romanticized by AI
+# 🌸 Muse.me — Your Life, Romanticized by AI
 
 <div align="center">
 
