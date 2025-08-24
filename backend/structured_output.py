@@ -1,17 +1,3 @@
-"""
-Muse.me Structured Output Implementation
-
-This module demonstrates advanced structured output capabilities for AI systems,
-ensuring consistent, validated, and parseable responses from Large Language Models.
-
-Key Concepts:
-1. Pydantic models for response validation
-2. JSON Schema generation for LLM guidance  
-3. Output parsing and error recovery
-4. Type safety and data validation
-5. Template-based structured generation
-"""
-
 import json
 import logging
 from typing import Dict, List, Any, Optional, Union, Literal
