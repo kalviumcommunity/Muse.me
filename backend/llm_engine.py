@@ -1,11 +1,19 @@
 import os
 import json
 from openai import OpenAI
+from dotenv import load_dotenv
+from rag_layer import RAGLayer
+
+# Load environment variables
+load_dotenv()
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=os.getenv("OPENROUTER_API_KEY"),
 )
+
+# Initialize RAG layer
+rag_layer = RAGLayer()
 
 SYSTEM_PROMPT = """
 You are a poetic, emotionally intelligent AI with a rich aesthetic vocabulary. 
@@ -24,21 +32,37 @@ Do not include any text or explanations outside of the JSON object itself.
 
 def generate_persona(user_input: str) -> dict:
     """
-    Generates an aesthetic persona by sending the system prompt and user input to the LLM.
+    Generates an aesthetic persona using RAG-enhanced prompting.
     
     Args:
         user_input: The text provided by the user.
         
     Returns:
         A dictionary containing the structured persona data, parsed from the AI's JSON response.
+        
+    Significance: This function now uses RAG to enhance the AI's responses.
+    The process:
+    1. Retrieve similar archetypes from the database based on user input
+    2. Add these archetypes as context to the system prompt
+    3. Send the enhanced prompt to the AI for better, more varied responses
     """
     try:
+        # --- RAG Enhancement Step ---
+        # Retrieve relevant archetypes and format them as context
+        rag_context = rag_layer.get_rag_context(user_input)
+        
+        # --- Enhanced System Prompt ---
+        # If we have RAG context, we enhance the system prompt with it
+        enhanced_system_prompt = SYSTEM_PROMPT
+        if rag_context:
+            enhanced_system_prompt = f"{SYSTEM_PROMPT}\n\n{rag_context}"
+        
         completion = client.chat.completions.create(
             model="mistralai/mistral-7b-instruct",
             messages=[
                 {
                     "role": "system",
-                    "content": SYSTEM_PROMPT,
+                    "content": enhanced_system_prompt,
                 },
                 {
                     "role": "user",
