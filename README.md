@@ -2,7 +2,6 @@
 
 <div align="center">
 
-
 <details>
 <summary><strong>Click to expand</strong></summary>
 
