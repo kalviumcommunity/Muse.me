@@ -1,24 +1,3 @@
-"""
-Muse.me Function Calling Implementation
-
-This module demonstrates advanced function calling capabilities for AI systems,
-specifically designed for the Muse.me aesthetic matching platform.
-
-Key Concepts:
-1. Structured function definitions with JSON schemas
-2. Dynamic function selection based on user intent
-3. Parameter validation and type safety
-4. Response formatting and error handling
-5. Integration with LLM function calling APIs
-
-Function Categories:
-- Aesthetic Analysis Functions
-- User Preference Functions  
-- Archetype Matching Functions
-- Content Generation Functions
-- Database Query Functions
-"""
-
 import json
 import logging
 from typing import Dict, List, Any, Optional, Callable, Union
