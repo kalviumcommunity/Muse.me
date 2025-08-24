@@ -1,17 +1,3 @@
-"""
-Enhanced Vector Database Layer for Muse.me
-
-This module implements advanced vector database operations using Supabase's pgvector extension.
-It provides native PostgreSQL vector operations for better performance and scalability.
-
-Key improvements over basic RAG:
-1. Native vector similarity search using pgvector
-2. Optimized database queries with proper indexing
-3. Batch vector operations for efficiency
-4. Advanced similarity metrics (cosine, euclidean, dot product)
-5. Vector database schema management
-"""
-
 import os
 import numpy as np
 from typing import List, Dict, Any, Optional, Tuple
