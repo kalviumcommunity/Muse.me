@@ -4,7 +4,7 @@
 
 **Transform real-life monotony into aesthetic alternate lives through creative, intelligent automation.**
 
-[✨ Live Demo](https://muse-me.vercel.app) • [📖 Documentation](docs/README.md) • [🐛 Report Bug](https://github.com/kalviumcommunity/Muse.me/issues) • [💡 Request Feature](https://github.com/kalviumcommunity/Muse.me/issues)
+[✨ Live Demo](https://muse-me.vercel.app) • [ Report Bug](https://github.com/nishatayub/Muse.me/issues) • [💡 Request Feature](https://github.com/nishatayub/Muse.me/issues)
 
 </div>
 
@@ -73,41 +73,96 @@ Seamless experience across desktop, tablet, and mobile devices
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Python 3.8+
-- Node.js 16+
-- Supabase account
-- OpenRouter API key
+> **Unified Setup!** Everything runs with a single command - no separate backend needed!
 
-### Installation
+### Prerequisites
+- Node.js 16+ 
+- OpenRouter API key ([Get it here](https://openrouter.ai/))
+- Spotify API credentials ([Get them here](https://developer.spotify.com/dashboard))
+
+### Installation Steps
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/kalviumcommunity/Muse.me.git
+   git clone https://github.com/nishatayub/Muse.me.git
    cd Muse.me
    ```
 
-2. **Set up the backend**
+2. **Install dependencies**
    ```bash
-   cd backend
-   pip install -r requirements.txt
-   cp .env.example .env
-   # Add your API keys to .env
-   uvicorn main:app --reload
+   npm install
    ```
 
-3. **Set up the frontend**
+3. **Set up environment variables**
    ```bash
-   cd frontend
-   npm install
+   cp .env.local.example .env.local
+   # Edit .env.local and add your API keys:
+   # - OPENROUTER_API_KEY
+   # - SPOTIFY_CLIENT_ID  
+   # - SPOTIFY_CLIENT_SECRET
+   ```
+
+4. **Run the application**
+   ```bash
    npm run dev
    ```
 
-4. **Visit `http://localhost:3000` and start creating your aesthetic alter egos! ✨**
+5. **Open your browser**
+   ```
+   http://localhost:3000
+   ```
+
+That's it! 🎉
 
 ---
 
-## 🧪 Core AI Concepts
+## 📁 Project Structure
+
+```
+Muse.me/
+├── pages/
+│   ├── api/              # Backend API Routes
+│   │   ├── generate.js   # Main persona generation
+│   │   └── health.js     # Health check
+│   ├── index.js          # Landing page
+│   ├── generate.js       # Generator UI
+│   └── _app.js           # App wrapper
+├── lib/                  # Backend Logic
+│   ├── archetypes.js     # Archetype dataset & RAG
+│   ├── prompts.js        # LLM prompts
+│   ├── spotify.js        # Spotify API client
+│   └── cardGenerator.js  # SVG card generator
+├── components/           # React components
+├── styles/              # Global styles
+├── .env.local           # Environment variables (not in git)
+└── package.json         # Dependencies
+```
+
+---
+
+## 🌐 Deployment to Vercel
+
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Unified Next.js application"
+   git push
+   ```
+
+2. **Deploy to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Click "Import Project"
+   - Select your repository
+   - Vercel auto-detects Next.js!
+   - Add environment variables:
+     - `OPENROUTER_API_KEY`
+     - `SPOTIFY_CLIENT_ID`
+     - `SPOTIFY_CLIENT_SECRET`
+   - Click "Deploy"
+
+---
+
+## 🧪 Core AI Concepts Demonstrated
 
 ### 🧾 1. Prompt Engineering
 
@@ -149,10 +204,14 @@ Muse.me uses a curated internal dataset of aesthetic archetypes:
 
 **RAG Process:**
 1. **Keyword Extraction**: User inputs are parsed for relevant keywords
-2. **Retrieval Layer**: Matching archetypes are retrieved from Supabase
+2. **Retrieval Layer**: Matching archetypes are retrieved from the dataset
 3. **Creative Blending**: Elements are recombined to construct unique fictional identities
 
 </details>
+
+---
+
+---
 
 ### 📦 3. Structured Output
 
@@ -176,6 +235,8 @@ This enables seamless frontend rendering and downstream function calling.
 
 </details>
 
+---
+
 ### 🔧 4. Function Calling
 
 <details>
@@ -187,8 +248,7 @@ Muse.me dynamically calls external tools for real-world integration:
 |--------|------|---------|
 | 🎨 **Moodboard Generation** | Replicate API (Stable Diffusion) | Create visual representations |
 | 🔊 **Playlist Fetching** | Spotify API | Match music to personas |
-| 🖼️ **Identity Card Creation** | SVG.js / html2canvas | Generate shareable cards |
-| 🧠 **Archetype Enhancement** | Supabase Logging | Improve future outputs |
+| 🖼️ **Identity Card Creation** | SVG/Canvas | Generate shareable cards |
 
 </details>
 
@@ -198,28 +258,27 @@ Muse.me dynamically calls external tools for real-world integration:
 
 <div align="center">
 
-### Backend
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com)
-[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com)
+**Core Technologies**
 
-**FastAPI** → RESTful API with clean routing and async responses  
-**OpenRouter** → Mixtral/LLaMA3 for creative generation  
-**Supabase** → Archetype storage (RAG) + user metadata  
-**Replicate API** → AI image generation via Stable Diffusion  
-**Spotify API** → Intelligent playlist matching  
-
-### Frontend
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://framer.com/motion)
 
-**Next.js** → React framework with SSR and optimized performance  
-**TailwindCSS** → Utility-first styling for aesthetic design  
-**Framer Motion** → Smooth animations and page transitions  
-**SVG.js & html2canvas** → Dynamic card generation and export  
-
 </div>
+
+**Frontend**
+- **Next.js** → React framework with API routes and SSR
+- **TailwindCSS** → Utility-first styling for aesthetic design
+- **Framer Motion** → Smooth animations and page transitions
+- **SVG.js & html2canvas** → Dynamic card generation and export
+
+**Backend & AI**
+- **Next.js API Routes** → Serverless API endpoints
+- **OpenRouter** → Mixtral/LLaMA3 for creative generation
+- **Replicate API** → AI image generation via Stable Diffusion
+- **Spotify API** → Intelligent playlist matching
+
+---
 
 ## ✅ Project Goals & Evaluation
 
@@ -270,7 +329,7 @@ Muse.me dynamically calls external tools for real-world integration:
 
 ## 🌱 Roadmap
 
-- [ ] 🚀 **Live Demo Deployment** (Vercel + Railway)
+- [ ] 🚀 **Live Demo Deployment** (Vercel)
 - [ ] 🤖 **Telegram/Discord Bot Integration**
 - [ ] 🎨 **Public Gallery** for browsing community personas
 - [ ] 👥 **Archetype Contribution Panel** (community-driven dataset)
@@ -279,39 +338,8 @@ Muse.me dynamically calls external tools for real-world integration:
 - [ ] 🎵 **Advanced Spotify Integration** (playlist generation)
 - [ ] 🌍 **Multi-language Support** (aesthetic diversity)
 
-## 📁 Project Structure
+---
 
-```
-Muse.me/
-├── 🔧 backend/
-│   ├── main.py              # FastAPI routes & middleware
-│   ├── llm_engine.py        # Prompt engineering & structured output
-│   ├── rag_layer.py         # Supabase integration & matching logic
-│   ├── api/
-│   │   ├── spotify.py       # Playlist generation
-│   │   ├── replicate.py     # Image generation
-│   │   └── cards.py         # Identity card creation
-│   └── requirements.txt
-├── 🎨 frontend/
-│   ├── pages/
-│   │   ├── index.js         # Landing page
-│   │   ├── generate.js      # Main generation interface
-│   │   └── gallery.js       # Public persona gallery
-│   ├── components/
-│   │   ├── PersonaCard.js   # Identity card component
-│   │   ├── MoodboardGrid.js # Visual layout
-│   │   └── PlaylistEmbed.js # Spotify integration
-│   ├── api/                 # Next.js API routes
-│   ├── utils/               # Helper functions
-│   └── package.json
-├── 📚 docs/
-│   ├── API.md              # API documentation
-│   ├── CONTRIBUTING.md     # Contribution guidelines
-│   └── DEPLOYMENT.md       # Deployment instructions
-├── .env.example            # Environment variables template
-├── .gitignore
-└── README.md
-```
 
 ## 🤝 Contributing
 
@@ -329,12 +357,15 @@ We welcome contributions! Here's how you can help:
 - 🔧 Performance optimizations
 - 📱 Mobile app development
 - 🧪 Testing and quality assurance
+- 📝 Documentation improvements
+
+---
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-**Muse.me** is an open-source project for creative exploration and learning.
+---
 
 ## ✨ Credits & Acknowledgments
 
@@ -345,7 +376,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 *For the love of aesthetic internet, creative code, and emotional resonance.*
 
 ### Special Thanks
-- 🤖 **OpenAI** for inspiring creative AI applications
+- 🤖 **OpenRouter** for accessible AI model APIs
 - 🎨 **Stable Diffusion Community** for democratizing AI art
 - 🎵 **Spotify** for their amazing API and music ecosystem
 - 🌸 **Aesthetic Internet** for endless inspiration

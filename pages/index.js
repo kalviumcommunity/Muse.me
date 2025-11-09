@@ -76,15 +76,17 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center py-12"
+          className="flex justify-center py-16"
         >
           <Link href="/generate">
             <motion.button
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-12 py-4 bg-muse-rose text-white rounded-full font-serif text-lg shadow-lg hover:shadow-xl transition-shadow"
+              whileTap={{ scale: 0.98 }}
+              className="px-16 py-5 bg-gradient-to-r from-muse-rose via-pink-400 to-muse-rose text-white rounded-full font-serif text-xl font-semibold shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center gap-3"
             >
-              ✨ Create Your Aesthetic Alter Ego ✨
+              <span>✨</span>
+              <span>Begin Your Transformation</span>
+              <span>→</span>
             </motion.button>
           </Link>
         </motion.div>
@@ -94,18 +96,25 @@ export default function Home() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="py-20 px-4 bg-white"
+          className="py-24 px-4 bg-white"
         >
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl font-serif font-bold text-center text-muse-dark mb-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-5xl font-serif font-bold text-center text-muse-dark mb-6">
               What is Muse.me?
             </h2>
-            <p className="text-lg text-gray-700 text-center font-serif mb-6">
-              <strong>Muse.me</strong> is a poetic AI-powered web experience that transforms your mundane journal entries, bios, or daily routines into <strong>aesthetic alter egos</strong> — complete with identity titles, fictional schedules, personality traits, moodboard prompts, Spotify playlists, and downloadable visual identity cards.
+            <div className="section-divider"></div>
+            <p className="text-xl text-gray-700 text-center font-serif mb-8 leading-relaxed px-4">
+              <strong className="text-muse-rose">Muse.me</strong> is a poetic AI-powered web experience that transforms your mundane journal entries, bios, or daily routines into <strong className="text-muse-dark">aesthetic alter egos</strong> — complete with identity titles, fictional schedules, personality traits, moodboard prompts, Spotify playlists, and downloadable visual identity cards.
             </p>
-            <p className="text-center text-muse-rose font-serif italic">
-              💡 Because life is more beautiful when viewed through an aesthetic lens.
-            </p>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-center text-muse-rose font-serif italic text-lg bg-muse-cream bg-opacity-50 py-6 px-8 rounded-2xl max-w-2xl mx-auto"
+            >
+              <span className="text-2xl">💡</span>
+              <p className="mt-2">Because life is more beautiful when viewed through an aesthetic lens.</p>
+            </motion.div>
           </div>
         </motion.section>
 
@@ -114,13 +123,15 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          className="py-20 px-4 bg-muse-cream bg-opacity-50"
+          viewport={{ once: true }}
+          className="py-24 px-4 bg-gradient-to-b from-muse-cream/30 to-white"
         >
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-serif font-bold text-center text-muse-dark mb-16">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-5xl font-serif font-bold text-center text-muse-dark mb-4">
               ✨ Features
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="section-divider mb-16"></div>
+            <div className="feature-grid">
               {features.map((feature, index) => (
                 <motion.div key={index} variants={itemVariants}>
                   <FeatureCard feature={feature} />

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import PersonaCard from '../components/PersonaCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+// Use relative API routes (Next.js API routes in /pages/api)
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 export default function Generate() {
   const [input, setInput] = useState('');
@@ -72,13 +74,28 @@ export default function Generate() {
           className="max-w-3xl mx-auto"
         >
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-5xl font-serif font-bold text-muse-dark mb-4">
-              ✨ Create Your Aesthetic Alter Ego ✨
-            </h1>
-            <p className="text-lg text-gray-700 font-serif">
+          <div className="text-center mb-16">
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-6xl font-serif font-bold text-muse-dark mb-6"
+            >
+              ✨ Create Your Aesthetic Alter Ego
+            </motion.h1>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="section-divider"
+            ></motion.div>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-xl text-gray-600 font-serif max-w-2xl mx-auto"
+            >
               Describe your daily life, and we'll romanticize it into something extraordinary
-            </p>
+            </motion.p>
           </div>
 
           {!persona ? (
@@ -86,41 +103,45 @@ export default function Generate() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-xl shadow-lg p-8 mb-8"
+              transition={{ delay: 0.4 }}
+              className="bg-white rounded-3xl shadow-2xl p-10 md:p-12 mb-8 border border-gray-100"
             >
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Main Input */}
                 <div>
-                  <label className="block text-lg font-serif font-bold text-muse-dark mb-3">
+                  <label className="flex items-center gap-2 text-xl font-serif font-bold text-muse-dark mb-4">
+                    <span className="text-2xl">📝</span>
                     Tell us about yourself
                   </label>
                   <textarea
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Write about your daily routine, hobbies, personality, or any aspect of your life you'd like to romanticize..."
-                    className="w-full h-40 p-4 border-2 border-muse-rose rounded-lg font-serif text-gray-800 placeholder-gray-400 focus:outline-none focus:border-muse-dark transition-colors resize-none"
+                    className="textarea-field h-48"
                   />
-                  <p className="text-sm text-gray-500 mt-2">Minimum 10 characters. Be descriptive for best results.</p>
+                  <p className="text-sm text-gray-500 mt-3 font-serif">
+                    💡 Minimum 10 characters. Be descriptive for best results.
+                  </p>
                 </div>
 
                 {/* Aesthetic Preference */}
                 <div>
-                  <label className="block text-lg font-serif font-bold text-muse-dark mb-3">
+                  <label className="flex items-center gap-2 text-xl font-serif font-bold text-muse-dark mb-4">
+                    <span className="text-2xl">🎨</span>
                     Aesthetic Preference (Optional)
                   </label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {aesthetics.map((aesthetic) => (
                       <motion.button
                         key={aesthetic}
                         type="button"
                         whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={() => setAestheticPreference(aesthetic)}
-                        className={`py-3 px-4 rounded-lg font-serif font-bold transition-all ${
+                        className={`py-4 px-6 rounded-2xl font-serif font-semibold transition-all duration-200 text-center ${
                           aestheticPreference === aesthetic
-                            ? 'bg-muse-rose text-white shadow-lg'
-                            : 'bg-gray-100 text-muse-dark hover:bg-gray-200'
+                            ? 'bg-gradient-to-r from-muse-rose to-pink-400 text-white shadow-lg scale-105'
+                            : 'bg-gray-50 text-muse-dark hover:bg-gray-100 border-2 border-gray-200'
                         }`}
                       >
                         {aesthetic}
@@ -132,11 +153,14 @@ export default function Generate() {
                 {/* Error Message */}
                 {error && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="bg-red-50 border-l-4 border-red-500 p-4 rounded"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="bg-red-50 border-2 border-red-200 p-5 rounded-2xl"
                   >
-                    <p className="text-red-700 font-serif">{error}</p>
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">⚠️</span>
+                      <p className="text-red-700 font-serif font-medium">{error}</p>
+                    </div>
                   </motion.div>
                 )}
 
@@ -144,11 +168,29 @@ export default function Generate() {
                 <motion.button
                   type="submit"
                   disabled={loading}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 bg-muse-rose text-white rounded-lg font-serif text-lg font-bold hover:shadow-lg transition-shadow disabled:opacity-50"
+                  whileHover={{ scale: loading ? 1 : 1.02 }}
+                  whileTap={{ scale: loading ? 1 : 0.98 }}
+                  className={`w-full py-5 rounded-2xl font-serif text-xl font-bold transition-all duration-300 flex items-center justify-center gap-3 ${
+                    loading
+                      ? 'btn-disabled'
+                      : 'bg-gradient-to-r from-muse-rose via-pink-400 to-muse-rose text-white shadow-xl hover:shadow-2xl'
+                  }`}
                 >
-                  {loading ? 'Generating Your Persona...' : '✨ Generate My Aesthetic Alter Ego ✨'}
+                  {loading ? (
+                    <>
+                      <svg className="animate-spin h-6 w-6" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <span>Crafting Your Aesthetic Alter Ego...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>✨</span>
+                      <span>Generate My Aesthetic Alter Ego</span>
+                      <span>→</span>
+                    </>
+                  )}
                 </motion.button>
               </form>
             </motion.div>
@@ -165,21 +207,32 @@ export default function Generate() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="flex gap-4 justify-center mt-8"
+                className="flex flex-col sm:flex-row gap-4 justify-center mt-12"
               >
                 <motion.button
                   whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => {
                     setPersona(null);
                     setInput('');
                     setAestheticPreference('');
                     setError(null);
                   }}
-                  className="px-8 py-3 bg-muse-rose text-white rounded-full font-serif font-bold hover:shadow-lg transition-shadow"
+                  className="px-10 py-4 bg-gradient-to-r from-muse-rose to-pink-400 text-white rounded-full font-serif text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  ✨ Create Another
+                  <span>✨</span>
+                  <span>Create Another Persona</span>
                 </motion.button>
+                <Link href="/">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-10 py-4 bg-white text-muse-dark border-2 border-muse-rose rounded-full font-serif text-lg font-bold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <span>←</span>
+                    <span>Back to Home</span>
+                  </motion.button>
+                </Link>
               </motion.div>
             </motion.div>
           )}

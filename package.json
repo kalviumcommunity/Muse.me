@@ -1,0 +1,27 @@
+{
+  "name": "muse-me",
+  "version": "2.0.0",
+  "description": "Muse.me - Transform your life into aesthetic alter egos",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "next": "^15.0.3",
+    "tailwindcss": "^3.4.14",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "framer-motion": "^11.11.17",
+    "axios": "^1.7.7",
+    "html2canvas": "^1.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.0.3"
+  }
+}
